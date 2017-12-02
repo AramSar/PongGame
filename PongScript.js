@@ -79,8 +79,8 @@ const drawResults = function() {
 }
 const loop = function() {
   draw();
-  updateCircle();
   drawCircle();
+  updateCircle();
   drawResults();
  
   requestAnimationFrame(loop);
