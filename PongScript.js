@@ -49,14 +49,14 @@ const updateCircle = function () {
      ball.x + ball.size > rect1.x &&
      ball.y - ball.size < rect1.y + rect1.height &&
      ball.y + ball.size > rect1.y) {
-    ball.deltaX = - ball.deltaX*0.98;
+    ball.deltaX = - ball.deltaX;
     ball.deltaY *= 1.00001;
      }
      if(ball.x - ball.size < rect2.x + rect2.width &&
         ball.x + ball.size > rect2.x &&
         ball.y - ball.size < rect2.y + rect2.height &&
         ball.y + ball.size > rect2.y) {
-      ball.deltaX = -ball.deltaX * 0.98;
+      ball.deltaX = -ball.deltaX;
       ball.deltaY *= 1.00001;
      }
     if(ball.x -ball.size < 0) {
