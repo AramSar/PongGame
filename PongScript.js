@@ -49,15 +49,15 @@ const updateCircle = function () {
      ball.x + ball.size > rect1.x &&
      ball.y - ball.size < rect1.y + rect1.height &&
      ball.y + ball.size > rect1.y) {
-    ball.deltaX = - ball.deltaX;
-    ball.deltaY *= 1.00001;
+    ball.deltaX = - ball.deltaX*1.001;
+    ball.deltaY *= 1.001;
      }
      if(ball.x - ball.size < rect2.x + rect2.width &&
         ball.x + ball.size > rect2.x &&
         ball.y - ball.size < rect2.y + rect2.height &&
         ball.y + ball.size > rect2.y) {
-      ball.deltaX = -ball.deltaX;
-      ball.deltaY *= 1.00001;
+      ball.deltaX = -ball.deltaX * 1.001;
+      ball.deltaY *= 1.001;
      }
     if(ball.x -ball.size < 0) {
       rect2.wins += 1;
@@ -67,20 +67,21 @@ const updateCircle = function () {
       rect1.wins+= 1;
       ball.x = canvas.width/2; ball.y = canvas.height/2;
     }
-    if(ball.deltaY >= 16) ball.deltaY = 5;
+    if(ball.deltaY >= 15) ball.deltaY = 15;
+    if(ball.deltaX >= 15) ball.deltaX = 15;
 }
 const drawResults = function() {
   ctx.font="48px Times New Roman";
-  const res1 = rect1.wins + " ";
-  const res2 = rect2.wins + " ";
-  const res = res1 + ": " +  res2;
-  ctx.fillText(res,canvas.width/2- 60,50);
+  const res1 = rect1.wins + "";
+  const res2 = rect2.wins + "";
+  const res = res1 + "  :  " +  res2;
+  ctx.fillText(res,canvas.width/2- 1.44*res.length**2,50);
   
 }
 const loop = function() {
   draw();
-  drawCircle();
   updateCircle();
+  drawCircle();
   drawResults();
  
   requestAnimationFrame(loop);
